@@ -14,7 +14,7 @@ function Users() {
       {backendData === null ? (
         <div>loading...</div>
       ) : (
-        backendData?.map((user, index) => <p key={index}>{user.firstname}</p>)
+        backendData?.map((user, index) => <p key={index}>{user.username}</p>)
       )}
     </div>
   );

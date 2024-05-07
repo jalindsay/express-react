@@ -1,5 +1,5 @@
 export function createUser(user) {
-  return fetch("/api/users", {
+  return fetch("/api/create-user", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

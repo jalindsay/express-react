@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { TextField, Button, Box } from "@mui/material";
+import { createUser } from "./endpoints/user";
 
 function CreateUser() {
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleNameChange = (e) => {
+  const handleUsernameChange = (e) => {
     setName(e.target.value);
   };
 
@@ -21,7 +22,7 @@ function CreateUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your logic to handle form submission here
-    console.log("data:", { name, email, password });
+    createUser({ username, email, password });
   };
 
   return (
@@ -30,7 +31,11 @@ function CreateUser() {
         <h1>Create User</h1>
         <form onSubmit={handleSubmit}>
           <Box sx={{ mb: 2 }}>
-            <TextField label="Name" value={name} onChange={handleNameChange} />
+            <TextField
+              label="Username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
           </Box>
           <Box sx={{ mb: 2 }}>
             <TextField
