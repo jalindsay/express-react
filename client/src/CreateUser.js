@@ -21,7 +21,6 @@ function CreateUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your logic to handle form submission here
     createUser({ username, email, password });
   };
 

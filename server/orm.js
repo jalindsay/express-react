@@ -24,6 +24,23 @@ class ORM {
     );
     return result.rows[0];
   }
+
+  async createUserDynamic(user) {
+    const fields = Object.keys(user);
+    const values = Object.values(user);
+    const placeholders = fields.map((_, i) => `$${i + 1}`);
+
+    if (user.password) {
+      user.password = bcrypt.hashSync(user.password, 10);
+    }
+
+    const query = `INSERT INTO app_user (${fields.join(
+      ", "
+    )}) VALUES (${placeholders.join(", ")}) RETURNING *;`;
+
+    const result = await this.client.query(query, values);
+    return result.rows[0];
+  }
 }
 
 module.exports = ORM;
